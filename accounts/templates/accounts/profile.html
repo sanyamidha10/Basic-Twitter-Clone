@@ -1,0 +1,36 @@
+{% extends 'feed/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container" style="width: 50%; align-items: center;">
+        <div class="col-sm-2">
+            <div class="media">
+                
+                {% if user.profile.image %}
+                    <img class="rounded-circle account-img img-fluid" alt="" src="{{user.profile.image.url}}">
+                
+                {% else %}
+                    <img class="rounded-circle account-img img-fluid" alt="" src="{% static 'defaultuser.png' %}">
+                {% endif %}
+                    
+                
+            </div>
+
+        </div>
+        <br>
+        <h3 style="text-transform: capitalize;">{{user.username}}</h3>
+        <br><br>
+        
+        <h6>Bio:</h6>
+        <div class="card">
+            
+            <div class="card-body">
+                {{user.profile.bio}}
+            </div>
+        </div>
+        <a href="{% url 'updatepr' %}"><button class="btn btn-outline-info">Edit</button></a>
+        <br>
+    </div>
+    
+{% endblock content %}
+    
